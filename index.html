@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BharatTailor Network (BTN)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              maroon: {
+                800: '#5e1b1b',
+                900: '#420f0f',
+              },
+              saffron: {
+                600: '#d97706',
+                700: '#b45309',
+              },
+              gold: {
+                500: '#b08d55',
+                600: '#8c6b3a',
+              },
+              ivory: '#fcfbf7',
+              charcoal: '#1c1917',
+              forest: '#14532d',
+            },
+            fontFamily: {
+              serif: ['Merriweather', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'slide-in-left': 'slideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+              'slide-in-right': 'slideInRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+              'shimmer': 'shimmer 3s linear infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideInLeft: {
+                '0%': { transform: 'translateX(-120%) rotate(-5deg)', opacity: '0' },
+                '100%': { transform: 'translateX(0) rotate(0)', opacity: '1' },
+              },
+              slideInRight: {
+                '0%': { transform: 'translateX(120%) rotate(5deg)', opacity: '0' },
+                '100%': { transform: 'translateX(0) rotate(0)', opacity: '1' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-1000px 0' },
+                '100%': { backgroundPosition: '1000px 0' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #fcfbf7; /* Ivory */
+        color: #1c1917; /* Charcoal */
+        cursor: default;
+      }
+
+      /* Cinematic Background Movement */
+      @keyframes ken-burns {
+        0% { transform: scale(1.0) translate(0, 0); }
+        100% { transform: scale(1.15) translate(-1%, -1%); }
+      }
+      .animate-ken-burns {
+        animation: ken-burns 20s ease-out infinite alternate;
+        will-change: transform;
+      }
+
+      /* Realistic Measuring Tape Pattern */
+      .tape-real {
+        background-color: #f59e0b; /* amber-500 */
+        /* Gradients for Tick Marks */
+        background-image: 
+          linear-gradient(to right, #1c1917 2px, transparent 2px), /* Inch Mark (Long) */
+          linear-gradient(to right, #44403c 1px, transparent 1px), /* Half Inch (Medium) */
+          linear-gradient(to right, #57534e 1px, transparent 1px); /* Eighth Inch (Short) */
+        
+        background-size: 
+          96px 100%, /* Approx 1 inch on screen */
+          48px 60%,  /* Half inch height */
+          12px 25%;  /* Small ticks height */
+        
+        background-position: 
+          left bottom, 
+          left bottom, 
+          left bottom;
+        
+        background-repeat: repeat-x;
+        box-shadow: 
+          inset 0 -1px 4px rgba(0,0,0,0.1), /* Inner depth */
+          0 8px 16px -2px rgba(0, 0, 0, 0.2); /* Drop shadow */
+        
+        position: relative;
+      }
+      
+      /* Numbers on the tape */
+      .tape-real::before {
+        content: '01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25';
+        font-family: 'Inter', monospace;
+        font-weight: 800;
+        font-size: 14px;
+        color: #1c1917;
+        letter-spacing: 76px; /* Adjusted to align with 96px ticks roughly */
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        white-space: nowrap;
+        opacity: 0.85;
+        pointer-events: none;
+      }
+
+      /* Text Shimmer Effect */
+      .text-shimmer {
+        background: linear-gradient(to right, #b45309 0%, #fcd34d 50%, #b45309 100%);
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: shimmer 4s linear infinite;
+      }
+
+      /* Custom Scrollbar */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
