@@ -7,6 +7,7 @@ import TailorProfile from './pages/TailorProfile';
 import Customize from './pages/Customize';
 import TailorDashboard from './pages/TailorDashboard';
 import HowItWorks from './pages/HowItWorks';
+import Auth from './pages/Auth';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/tailor/:id" element={<TailorProfile />} />
           <Route path="/customize" element={<Customize />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/partner/dashboard" element={<TailorDashboard />} />
           {/* Fallback */}
           <Route path="*" element={<Home />} />

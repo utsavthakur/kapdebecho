@@ -45,16 +45,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/partner/dashboard" className="hidden sm:block text-xs font-bold text-maroon-900 border border-maroon-900 px-3 py-1.5 rounded hover:bg-maroon-900 hover:text-white transition-all uppercase tracking-wide">
                 {isTailorPortal ? 'Exit Portal' : 'For Tailors'}
               </Link>
-              <button className="text-stone-600 hover:text-maroon-900">
+              <button className="text-stone-600 hover:text-maroon-900 transition-colors">
                 <Search size={20} />
               </button>
-              <button className="text-stone-600 hover:text-maroon-900 relative">
+              <button className="text-stone-600 hover:text-maroon-900 relative transition-colors">
                 <ShoppingBag size={20} />
-                <span className="absolute -top-1 -right-1 h-2 w-2 bg-saffron-600 rounded-full"></span>
+                <span className="absolute -top-1 -right-1 h-2 w-2 bg-saffron-600 rounded-full animate-pulse"></span>
               </button>
-              <button className="text-stone-600 hover:text-maroon-900">
+              <Link
+                to="/auth"
+                className="text-stone-600 hover:text-maroon-900 transition-colors"
+                title="Sign In / Register"
+              >
                 <User size={20} />
-              </button>
+              </Link>
               <button className="md:hidden text-stone-600">
                 <Menu size={24} />
               </button>
@@ -62,6 +66,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </div>
       </header>
+
+
 
       {/* Main Content */}
       <main className="flex-grow z-10 relative">
