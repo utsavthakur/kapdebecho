@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
 
 
 
-          <div className="inline-flex items-center px-4 py-1.5 rounded border border-gold-600/40 bg-black/40 backdrop-blur-sm text-gold-400 text-xs font-bold tracking-[0.2em] uppercase mb-8 animate-fade-in-up shadow-sm">
+          <div className="inline-flex items-center px-4 py-1.5 rounded border border-gold-600/40 bg-black/40 backdrop-blur-sm text-white text-xs font-bold tracking-[0.2em] uppercase mb-8 animate-fade-in-up shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse"></span>
             India's First National Tailoring Grid
           </div>
