@@ -1,6 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
+import PageTransition from './components/PageTransition';
 import Home from './pages/Home';
 import Discovery from './pages/Discovery';
 import TailorProfile from './pages/TailorProfile';
@@ -10,22 +12,23 @@ import HowItWorks from './pages/HowItWorks';
 import Auth from './pages/Auth';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/discovery" element={<Discovery />} />
-          <Route path="/tailor/:id" element={<TailorProfile />} />
-          <Route path="/customize" element={<Customize />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/partner/dashboard" element={<TailorDashboard />} />
-          {/* Fallback */}
-          <Route path="*" element={<Home />} />
+    <Layout>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/discovery" element={<PageTransition><Discovery /></PageTransition>} />
+          <Route path="/tailor/:id" element={<PageTransition><TailorProfile /></PageTransition>} />
+          <Route path="/customize" element={<PageTransition><Customize /></PageTransition>} />
+          <Route path="/how-it-works" element={<PageTransition><HowItWorks /></PageTransition>} />
+          <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
+          <Route path="/partner/dashboard" element={<PageTransition><TailorDashboard /></PageTransition>} />
+          <Route path="*" element={<PageTransition><Home /></PageTransition>} />
         </Routes>
-      </Layout>
-    </Router>
+      </AnimatePresence>
+    </Layout>
   );
 }
 
