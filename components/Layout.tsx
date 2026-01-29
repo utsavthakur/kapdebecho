@@ -16,7 +16,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            {/* <div className="flex-shrink-0 flex items-center">
+            <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex flex-col items-start group">
                 <h1 className="text-2xl font-serif font-bold text-maroon-900 tracking-tight group-hover:text-maroon-800 transition-colors">
                   BHARAT<span className="text-gold-600">TAILOR</span>
@@ -25,7 +25,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   Network
                 </span>
               </Link>
-            </div> */}
+            </div>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex space-x-8 items-center">
