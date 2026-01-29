@@ -17,13 +17,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex flex-col items-start group">
-                <h1 className="text-2xl font-serif font-bold text-maroon-900 tracking-tight group-hover:text-maroon-800 transition-colors">
-                  BHARAT<span className="text-gold-600">TAILOR</span>
-                </h1>
-                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-stone-500 font-medium ml-0.5">
-                  Network
-                </span>
+              <Link to="/" className="flex items-center">
+                <img src="/assets/logo.png" alt="BharatTailor Network" className="h-16 w-auto object-contain" />
               </Link>
             </div>
 
