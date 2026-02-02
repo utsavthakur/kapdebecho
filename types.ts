@@ -15,6 +15,11 @@ export interface Tailor {
   imageUrl: string;
   startingPrice: number;
   tags: string[];
+  location: {
+    lat: number;
+    lng: number;
+    address?: string;
+  };
 }
 
 export interface Craft {

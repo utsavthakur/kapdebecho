@@ -11,7 +11,12 @@ export const MOCK_TAILORS: Tailor[] = [
     verified: true,
     imageUrl: 'https://picsum.photos/400/400?random=1',
     startingPrice: 4500,
-    tags: ['Heritage Certified', 'Hand Stitching']
+    tags: ['Heritage Certified', 'Hand Stitching'],
+    location: {
+      lat: 26.8467,
+      lng: 80.9462,
+      address: 'Chowk, Lucknow, Uttar Pradesh'
+    }
   },
   {
     id: '2',
@@ -23,7 +28,12 @@ export const MOCK_TAILORS: Tailor[] = [
     verified: true,
     imageUrl: 'https://picsum.photos/400/400?random=2',
     startingPrice: 1200,
-    tags: ['Silk Expert', 'Quick Delivery']
+    tags: ['Silk Expert', 'Quick Delivery'],
+    location: {
+      lat: 12.8185,
+      lng: 79.6947,
+      address: 'Gandhi Road, Kanchipuram, Tamil Nadu'
+    }
   },
   {
     id: '3',
@@ -35,7 +45,12 @@ export const MOCK_TAILORS: Tailor[] = [
     verified: true,
     imageUrl: 'https://picsum.photos/400/400?random=3',
     startingPrice: 8500,
-    tags: ['Royal Heritage', 'Gold Thread Work']
+    tags: ['Royal Heritage', 'Gold Thread Work'],
+    location: {
+      lat: 26.9124,
+      lng: 75.7873,
+      address: 'MI Road, Jaipur, Rajasthan'
+    }
   }
 ];
 

@@ -1,0 +1,9 @@
+UPDATES
+=======
+
+Modified Files:
+- constants.ts
+- package-lock.json
+
+New Assets:
+- public/assets/textures/ (various new texture files)

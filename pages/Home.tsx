@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import { REGIONAL_CRAFTS, MOCK_TAILORS } from '../constants';
 import HowItWorksSection from '../components/HowItWorksSection';
+import CinematicSpotlight from '../components/CinematicSpotlight';
 import TailorCard from '../components/TailorCard';
 import Button from '../components/Button';
 import { ArrowRight, CheckCircle, Shield, Truck } from 'lucide-react';
@@ -44,6 +45,9 @@ const Home: React.FC = () => {
           </Link>
         </div>
       </section>
+
+      {/* Cinematic Spotlight: The Kanjeevaram Legacy */}
+      <CinematicSpotlight />
 
       {/* Featured Tailors */}
       <section className="bg-stone-100 py-20 border-y border-stone-200">
