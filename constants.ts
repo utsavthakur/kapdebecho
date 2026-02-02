@@ -80,7 +80,7 @@ export const REGIONAL_CRAFTS: Craft[] = [
 
 export const MOCK_ORDERS: Order[] = [
   {
-    id: 'BTN-8823',
+    id: 'VA-8823',
     status: 'Stitching',
     item: 'Custom Bandhgala Suit',
     tailorName: 'Royal Rajputana Tailors',
@@ -88,7 +88,7 @@ export const MOCK_ORDERS: Order[] = [
     amount: 12500
   },
   {
-    id: 'BTN-8810',
+    id: 'VA-8810',
     status: 'Delivered',
     item: 'Silk Blouse',
     tailorName: 'Savitri Devi',

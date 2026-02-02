@@ -76,7 +76,7 @@ const HowItWorks: React.FC = () => {
                 <div className="mt-16 text-center relative z-10">
                     <div className="inline-flex items-center gap-4 bg-maroon-900 text-ivory px-8 py-3 rounded-full font-medium shadow-lg border border-gold-500/30">
                         <BadgeCheck className="text-gold-500" size={20} />
-                        <span>The Solution: <strong>BharatTailor Network</strong> — A Digital Bridge.</span>
+                        <span>The Solution: <strong>VastraAngan</strong> — A Digital Bridge.</span>
                     </div>
                 </div>
             </section>
@@ -205,7 +205,7 @@ const HowItWorks: React.FC = () => {
                     <div className="max-w-md">
                         <h4 className="text-ivory font-serif font-bold text-lg mb-4">Regulatory Compliance</h4>
                         <p className="mb-4">
-                            BharatTailor Network operates in full compliance with Indian Consumer Protection guidelines.
+                            VastraAngan operates in full compliance with Indian Consumer Protection guidelines.
                             All partner tailors are KYC-verified (Aadhaar/PAN) and onboarded as MSME entities where applicable.
                         </p>
                         <div className="flex gap-4">

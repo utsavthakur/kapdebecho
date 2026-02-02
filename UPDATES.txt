@@ -12,3 +12,17 @@ Previous Updates:
   - package-lock.json
 - New Assets:
   - public/assets/textures/ (various new texture files)
+
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+
+Open Hostinger: Go to the File Manager for your domain vastraangan.in.
+Open public_html: Double-click to go inside the public_html folder.
+Upload: Drag and drop the 
+site_upload.zip
+ file into that folder.
+Extract: Right-click 
+site_upload.zip
+ -> Extract. (Make sure files extract securely here, not inside another folder).
+Done! Go to vastraangan.in to see your site.

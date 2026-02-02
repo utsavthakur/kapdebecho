@@ -18,11 +18,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex flex-col items-start group">
-                <h1 className="text-2xl font-serif font-bold text-maroon-900 tracking-tight group-hover:text-maroon-800 transition-colors">
-                  भारत-<span className="text-gold-600">TAILOR</span>
+                <h1 className="text-3xl md:text-4xl font-serif font-bold text-maroon-900 tracking-tight group-hover:text-maroon-800 transition-colors">
+                  वस्त्र<span className="text-gold-600">Angan</span>
                 </h1>
                 <span className="text-[0.65rem] uppercase tracking-[0.2em] text-stone-500 font-medium ml-0.5">
-                  Network
+                  Heritage . Handcrafted
                 </span>
               </Link>
             </div>
@@ -78,7 +78,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <footer className="bg-stone-900 text-stone-400 pt-16 pb-8 border-t-4 border-gold-600 z-10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-white text-lg font-serif mb-4">BHARAT<span className="text-gold-600">TAILOR</span></h2>
+            <h2 className="text-white text-lg font-serif mb-4">वस्त्र<span className="text-gold-600">ANGAN</span></h2>
             <p className="text-sm leading-relaxed mb-6">
               Connecting India's finest heritage craftsmanship with the modern world. Verified, Trusted, Timeless.
             </p>
@@ -125,7 +125,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-stone-800 text-xs text-center md:text-left flex flex-col md:flex-row justify-between">
-          <p>© 2024 BharatTailor Network. All rights reserved.</p>
+          <p>© 2024 VastraAngan. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <a href="#" className="hover:text-white">Terms of Service</a>

@@ -64,8 +64,8 @@ const Auth: React.FC = () => {
                     <div className="flex bg-stone-100 p-1 rounded-lg mb-8">
                         <button
                             className={`flex-1 py-2.5 text-sm font-bold rounded-md transition-all ${activeTab === 'login'
-                                    ? 'bg-white text-maroon-900 shadow-sm'
-                                    : 'text-stone-500 hover:text-stone-700'
+                                ? 'bg-white text-maroon-900 shadow-sm'
+                                : 'text-stone-500 hover:text-stone-700'
                                 }`}
                             onClick={() => setActiveTab('login')}
                         >
@@ -73,8 +73,8 @@ const Auth: React.FC = () => {
                         </button>
                         <button
                             className={`flex-1 py-2.5 text-sm font-bold rounded-md transition-all ${activeTab === 'signup'
-                                    ? 'bg-white text-maroon-900 shadow-sm'
-                                    : 'text-stone-500 hover:text-stone-700'
+                                ? 'bg-white text-maroon-900 shadow-sm'
+                                : 'text-stone-500 hover:text-stone-700'
                                 }`}
                             onClick={() => setActiveTab('signup')}
                         >
@@ -163,7 +163,7 @@ const Auth: React.FC = () => {
                 </div>
 
                 <div className="mt-12 text-center text-xs text-stone-400">
-                    &copy; 2024 BharatTailor Network. Protected by reCAPTCHA.
+                    &copy; 2024 VastraAngan. Protected by reCAPTCHA.
                 </div>
             </div>
         </div>
