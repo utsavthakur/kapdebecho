@@ -1,9 +1,14 @@
 UPDATES
 =======
 
-Modified Files:
-- constants.ts
-- package-lock.json
+Recent Changes:
+- Enhanced "Queen of Silks" section (CinematicSpotlight.tsx):
+  - Increased video background brightness.
+  - Improved image blending (removed border, added mix-blend-lighten).
 
-New Assets:
-- public/assets/textures/ (various new texture files)
+Previous Updates:
+- Modified Files:
+  - constants.ts
+  - package-lock.json
+- New Assets:
+  - public/assets/textures/ (various new texture files)

@@ -8,7 +8,7 @@ const CinematicSpotlight: React.FC = () => {
             {/* Video Background */}
             <div className="absolute inset-0 z-0">
                 <video
-                    className="w-full h-full object-cover opacity-40"
+                    className="w-full h-full object-cover opacity-60"
                     autoPlay
                     muted
                     loop
@@ -16,7 +16,7 @@ const CinematicSpotlight: React.FC = () => {
                 >
                     <source src="/assets/btn-0.4.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-stone-900/90"></div>
+                <div className="absolute inset-0 bg-stone-900/40"></div>
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -63,15 +63,12 @@ const CinematicSpotlight: React.FC = () => {
                     </div>
 
                     {/* Image Side */}
-                    <div className="w-full lg:w-1/2 relative group">
-                        <div className="relative z-10 rounded-sm overflow-hidden shadow-2xl border border-white/40 cursor-zoom-in">
-                            {/* Overlay Gradient - Fades out on hover to see details */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
-
+                    <div className="w-full lg:w-1/2 relative group flex justify-center lg:justify-end">
+                        <div className="relative z-10 cursor-zoom-in">
                             <img
                                 src="/assets/garments/garment_kanjeevaram.png"
                                 alt="Kanjeevaram Silk Saree"
-                                className="w-full h-auto object-cover transform origin-center transition-transform duration-1000 ease-out group-hover:scale-150"
+                                className="w-full max-w-xl h-auto object-contain transform origin-center transition-transform duration-1000 ease-out group-hover:scale-105 opacity-90 mix-blend-lighten"
                             />
                         </div>
                     </div>
