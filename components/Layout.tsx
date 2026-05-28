@@ -1,15 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Menu, Search, User, ShoppingBag, ShieldCheck } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { supabase } from '../services/supabase';
+import { authService } from '../services/auth';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const isTailorPortal = location.pathname.includes('/partner');
+  const [user, setUser] = useState<any>(null);
+  const [role, setRole] = useState<string | null>(null);
+
+  useEffect(() => {
+    const init = async () => {
+      const { data: { user: u } } = await supabase.auth.getUser();
+      setUser(u);
+      if (u) {
+        const r = await authService.getCurrentUserRole();
+        setRole(r);
+      }
+    };
+    init();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      setUser(session?.user || null);
+      if (session?.user) {
+        const r = await authService.getCurrentUserRole();
+        setRole(r);
+      } else {
+        setRole(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const isTailor = role === 'tailor';
+
+  const userIconLink = isTailor ? '/tailor/dashboard' : user ? '/my-orders' : '/auth';
+  const userIconTitle = isTailor ? 'Partner Dashboard' : user ? 'My Orders' : 'Sign In / Register';
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-ivory text-charcoal relative">
 
-
+      <Toaster position="top-right" toastOptions={{ duration: 4000, style: { fontSize: '14px' } }} />
 
       {/* Header */}
       <header className="sticky top-0 z-40 bg-sky-50/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
@@ -31,9 +65,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <nav className="hidden md:flex space-x-8 items-center">
               {!isTailorPortal ? (
                 <>
-                  <Link to="/discovery" className="text-stone-900 hover:text-maroon-900 font-medium text-sm tracking-wide">FIND A TAILOR</Link>
-                  <Link to="/heritage" className="text-stone-900 hover:text-maroon-900 font-medium text-sm tracking-wide">HERITAGE CRAFTS</Link>
-                  <Link to="/how-it-works" className="text-stone-900 hover:text-maroon-900 font-medium text-sm tracking-wide">HOW IT WORKS</Link>
+                  {!isTailor && (
+                    <>
+                      <Link to="/discovery" className="text-stone-900 hover:text-maroon-900 font-medium text-sm tracking-wide">FIND A TAILOR</Link>
+                      <Link to="/how-it-works" className="text-stone-900 hover:text-maroon-900 font-medium text-sm tracking-wide">HOW IT WORKS</Link>
+                      <Link to="/my-orders" className="text-stone-900 hover:text-maroon-900 font-medium text-sm tracking-wide">MY ORDERS</Link>
+                    </>
+                  )}
+                  {isTailor && (
+                    <Link to="/tailor/dashboard" className="text-maroon-900 font-bold border-b-2 border-maroon-900 text-sm tracking-wide">DASHBOARD</Link>
+                  )}
                 </>
               ) : (
                 <span className="text-maroon-900 font-bold border-b-2 border-maroon-900">PARTNER PORTAL</span>
@@ -42,9 +83,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             {/* Right Actions */}
             <div className="flex items-center space-x-6">
-              <Link to={isTailorPortal ? '/' : '/partner'} className="hidden sm:block text-xs font-bold text-maroon-900 border border-maroon-900 px-3 py-1.5 rounded hover:bg-maroon-900 hover:text-white transition-all uppercase tracking-wide">
-                {isTailorPortal ? 'Exit Portal' : 'For Tailors'}
-              </Link>
+              {!isTailor && (
+                <Link to={isTailorPortal ? '/' : '/partner'} className="hidden sm:block text-xs font-bold text-maroon-900 border border-maroon-900 px-3 py-1.5 rounded hover:bg-maroon-900 hover:text-white transition-all uppercase tracking-wide">
+                  {isTailorPortal ? 'Exit Portal' : 'For Tailors'}
+                </Link>
+              )}
               <button className="text-stone-600 hover:text-maroon-900 transition-colors">
                 <Search size={20} />
               </button>
@@ -53,9 +96,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <span className="absolute -top-1 -right-1 h-2 w-2 bg-saffron-600 rounded-full animate-pulse"></span>
               </button>
               <Link
-                to="/auth"
+                to={userIconLink}
                 className="text-stone-600 hover:text-maroon-900 transition-colors"
-                title="Sign In / Register"
+                title={userIconTitle}
               >
                 <User size={20} />
               </Link>
@@ -66,8 +109,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </div>
       </header>
-
-
 
       {/* Main Content */}
       <main className="flex-grow z-10 relative">

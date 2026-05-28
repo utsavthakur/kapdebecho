@@ -11,6 +11,7 @@ import Customize from './pages/Customize';
 import TailorDashboard from './pages/TailorDashboard';
 import HowItWorks from './pages/HowItWorks';
 import Auth from './pages/Auth';
+import MyOrders from './pages/MyOrders';
 import TailorAuth from './pages/TailorAuth';
 import TailorLanding from './pages/TailorLanding';
 import ProtectedTailorRoute from './components/ProtectedTailorRoute';
@@ -53,6 +54,7 @@ function App() {
           <Route path="/customize" element={<PageTransition><Customize /></PageTransition>} />
           <Route path="/how-it-works" element={<PageTransition><HowItWorks /></PageTransition>} />
           <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
+          <Route path="/my-orders" element={<PageTransition><MyOrders /></PageTransition>} />
           <Route path="/partner" element={<PageTransition><TailorLanding /></PageTransition>} />
           <Route path="/tailor/login" element={<PageTransition><TailorAuth /></PageTransition>} />
           <Route element={<PageTransition><ProtectedTailorRoute /></PageTransition>}>

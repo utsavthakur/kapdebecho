@@ -1,0 +1,11 @@
+[auth]
+enabled = true
+
+[analytics]
+enabled = false
+
+[functions]
+enabled = true
+
+[storage]
+enabled = true

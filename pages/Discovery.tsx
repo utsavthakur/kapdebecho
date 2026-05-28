@@ -1,25 +1,59 @@
-import React, { useState } from 'react';
-import { MOCK_TAILORS } from '../constants';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../services/supabase';
 import TailorCard from '../components/TailorCard';
-// import TailorMap from '../components/TailorMap';
 import HeritageList from '../components/HeritageList';
-import { Filter, SlidersHorizontal, Map as MapIcon, List as ListIcon } from 'lucide-react';
+import { Tailor } from '../types';
+import { Filter, SlidersHorizontal, Map as MapIcon, List as ListIcon, Loader2 } from 'lucide-react';
 import Button from '../components/Button';
 
 const Discovery: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [realTailors, setRealTailors] = useState<Tailor[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedTailorId, setSelectedTailorId] = useState<string | undefined>(undefined);
-  const [viewMode, setViewMode] = useState<'list' | 'map'>('list'); // For mobile mostly
+  const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
 
-  // In a real app, this would filter based on state
-  const filteredTailors = MOCK_TAILORS.filter(t =>
+  useEffect(() => {
+    const fetchTailors = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('tailors')
+          .select('*') as { data: any[] | null, error: any };
+
+        if (error) throw error;
+
+        const tailors = (data || []).map(d => ({
+          id: d.id,
+          name: d.name || 'Master Tailor',
+          region: d.region || 'India',
+          specialization: d.specialization || 'Custom Tailoring',
+          experienceYears: d.experience_years || 0,
+          rating: d.rating || 0,
+          verified: d.verified || false,
+          imageUrl: d.image_url || `https://picsum.photos/seed/${d.id}/400/400`,
+          startingPrice: d.starting_price || 0,
+          tags: d.tags || ['Handcrafted'],
+          location: d.location || { lat: 20.5937, lng: 78.9629 },
+        } as Tailor));
+        setRealTailors(tailors);
+      } catch (err) {
+        console.error('Error fetching tailors:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTailors();
+  }, []);
+
+  const allTailors = realTailors;
+
+  const filteredTailors = allTailors.filter(t =>
     t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     t.region.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleTailorSelect = (id: string) => {
     setSelectedTailorId(id);
-    // Scroll to card in list view if on desktop
     const element = document.getElementById(`tailor-card-${id}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -71,12 +105,12 @@ const Discovery: React.FC = () => {
       {/* Main Content Area */}
       <div className="flex flex-1 overflow-hidden relative">
 
-        {/* Heritage List Side (Left) - Hidden on mobile if in list mode */}
+        {/* Heritage List Side (Left) */}
         <div className={`w-full md:w-3/5 lg:w-2/3 h-full transition-all duration-300 p-4 ${viewMode === 'list' ? 'hidden md:block' : 'block'}`}>
           <HeritageList />
         </div>
 
-        {/* Tailor List Side (Right) - Hidden on mobile if in map choice (now Crafts) */}
+        {/* Tailor List Side (Right) */}
         <div className={`w-full md:w-2/5 lg:w-1/3 h-full bg-stone-50 overflow-y-auto border-l border-stone-200 ${viewMode === 'map' ? 'hidden md:block' : 'block'}`}>
           <div className="p-4 sm:p-6 space-y-4">
             <div className="flex justify-between items-center mb-2">
@@ -92,7 +126,6 @@ const Discovery: React.FC = () => {
                 onClick={() => {
                   setSelectedTailorId(tailor.id);
                   if (window.innerWidth < 768) {
-                    // Stay on list view on mobile when selecting
                   }
                 }}
               >
@@ -100,7 +133,13 @@ const Discovery: React.FC = () => {
               </div>
             ))}
 
-            {filteredTailors.length === 0 && (
+            {loading && (
+              <div className="flex justify-center py-20">
+                <Loader2 className="animate-spin text-maroon-900 h-8 w-8" />
+              </div>
+            )}
+
+            {!loading && filteredTailors.length === 0 && (
               <div className="text-center py-20">
                 <p className="text-stone-500">No tailors found matching your criteria.</p>
               </div>

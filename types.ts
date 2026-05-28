@@ -20,6 +20,7 @@ export interface Tailor {
     lng: number;
     address?: string;
   };
+  upiId?: string;
 }
 
 export interface Craft {
@@ -28,13 +29,4 @@ export interface Craft {
   region: string;
   description: string;
   imageUrl: string;
-}
-
-export interface Order {
-  id: string;
-  status: 'Received' | 'Stitching' | 'QC' | 'Packaging' | 'Shipped' | 'Delivered';
-  item: string;
-  tailorName: string;
-  date: string;
-  amount: number;
 }
